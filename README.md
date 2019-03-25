@@ -14,7 +14,7 @@ This repository referenced by : https://github.com/narfunikita/NLog.Telegram
 Usage
 =====
 1. Create a TelegramBot(https://core.telegram.org/bots#3-how-do-i-create-a-bot).
-2. Configure NLog to use `NLog.Telegram`:
+2. Configure NLog to use `NLog.Telegram`: https://github.com/nlog/nlog/wiki/Configuration-file
 
 ### NLog.config
 
