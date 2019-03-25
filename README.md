@@ -52,4 +52,6 @@ BotToken    | Your telegram bot token (e.g 123456:ABC-DEF1234ghIkl-zyx57W2v1u123
 ChatId   | Unique identifier for the message recipient � User or GroupChat id
 BaseUrl | Optional. Api bot Url. Default: https://api.telegram.org/bot
 Format | Optional. Render layout for telegram message. Default : DEFAULT
+
+----------
 Reference: https://github.com/narfunikita/NLog.Telegram
