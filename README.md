@@ -44,7 +44,7 @@ Usage
 ```
 ---------
 ### Example
-```
+```csharp
 	var log = LogManager.GetCurrentClassLogger();
 
 	log.Debug($"`hello world` **hello world** __hello world__");
