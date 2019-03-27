@@ -24,7 +24,7 @@ Usage
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <extensions>
-    <add assembly="NLog.Telegram" />
+    <add assembly="NLog.Telegram.Format" />
   </extensions>
 
   <targets async="true">
@@ -38,7 +38,7 @@ Usage
   </targets>
 
   <rules>
-    <logger name="*" minlevel="Debug" writeTo="telegramTarget" />
+    <logger name="*" minlevel="Trace" writeTo="telegramTarget" />
   </rules>
 </nlog>
 ```
