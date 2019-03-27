@@ -42,7 +42,13 @@ Usage
   </rules>
 </nlog>
 ```
+---------
+### Example
+```
+	var log = LogManager.GetCurrentClassLogger();
 
+	log.Debug($"`hello world` **hello world** __hello world__");
+```
 
 ### Configuration Options
 
