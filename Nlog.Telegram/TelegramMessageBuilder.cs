@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+using System.Net;
 
 namespace NLog.Telegram
 {
@@ -54,7 +52,7 @@ namespace NLog.Telegram
                 _request.Text.Substring(0, Math.Min(MaxTextLength, _request.Text.Length)));
             dic.Add("parse_mode","MARKDOWN");
             var array = dic
-                .Select(x => string.Format("{0}={1}", HttpUtility.UrlEncode(x.Key), HttpUtility.UrlEncode(x.Value)))
+                .Select(x => string.Format("{0}={1}", WebUtility.UrlEncode(x.Key), WebUtility.UrlEncode(x.Value)))
                 .ToArray();
 
             var url = this._baseUrl + "?" + string.Join("&", array);

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <RootNamespace>Nlog.Telegram</RootNamespace>
+    <Version>1.0.4</Version>
+
+    <Description>
+An NLog target for Telegram Messenger
+Check out the GitHub repo for setup instructions: https://github.com/Sopheakmorm/NLog.Telegram.Format
+    </Description>
+    <Copyright>Copyright 2019</Copyright>
+    <Authors>SOPHEAK MORM</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/Sopheakmorm/NLog.Telegram.Format</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Sopheakmorm/NLog.Telegram.Format</PackageProjectUrl>
+    <PackageIconUrl>http://pngimg.com/uploads/telegram/telegram_PNG36.png</PackageIconUrl>
+    <PackageTags>tracing log structured NLog Telegram</PackageTags>
+    <PackageReleaseNotes>
+Added support for Net45 + NetStandard2.0
+    </PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.5.11" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
