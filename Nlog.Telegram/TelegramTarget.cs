@@ -1,13 +1,7 @@
-﻿using NLog.Common;
+﻿using System;
+using NLog.Common;
 using NLog.Config;
 using NLog.Targets;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Caching;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLog.Telegram
 {
@@ -61,36 +55,6 @@ namespace NLog.Telegram
                 ;
 
             builder.Send();
-        }
-    }
-
-    [Target("MemoryCache")]
-    public class MemoryCacheTarget : TargetWithLayout
-    {
-        static MemoryCache Cache = new MemoryCache("log");
-
-        public MemoryCacheTarget()
-        {
-            //
-        }
-
-        [RequiredParameter] public long CacheSecond { get; set; }
-        [RequiredParameter] public string Key { get; set; }
-
-        protected override void Write(AsyncLogEventInfo info)
-        {
-            try
-            {
-                var key = (long) info.LogEvent.Properties[key: Key];
-
-                // write to cache
-                // json object
-                var message = Layout.Render(info.LogEvent);
-            }
-            catch (Exception e)
-            {
-                info.Continuation(e);
-            }
         }
     }
 }
