@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <RootNamespace>Nlog.Telegram</RootNamespace>
-    <Version>1.0.4</Version>
+    <Version>2.0.0</Version>
 
     <Description>
 An NLog target for Telegram Messenger
@@ -19,6 +19,7 @@ Check out the GitHub repo for setup instructions: https://github.com/Sopheakmorm
     <PackageTags>tracing log structured NLog Telegram</PackageTags>
     <PackageReleaseNotes>
 Added support for Net45 + NetStandard2.0
+Added Layout support for BaseUrl + BotToken + ChatId
     </PackageReleaseNotes>
   </PropertyGroup>
 

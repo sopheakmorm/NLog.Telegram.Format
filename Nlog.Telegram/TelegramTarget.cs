@@ -1,6 +1,7 @@
 ﻿using System;
 using NLog.Common;
 using NLog.Config;
+using NLog.Layouts;
 using NLog.Targets;
 
 namespace NLog.Telegram
@@ -11,24 +12,17 @@ namespace NLog.Telegram
         public TelegramTarget()
         {
             this.BaseUrl = "https://api.telegram.org/bot";
+            this.OptimizeBufferReuse = true;
         }
 
-        public string BaseUrl { get; set; }
+        [RequiredParameter]
+        public Layout BaseUrl { get; set; }
 
-        [RequiredParameter] public string BotToken { get; set; }
+        [RequiredParameter]
+        public Layout BotToken { get; set; }
 
-        [RequiredParameter] public string ChatId { get; set; }
-
-        protected override void InitializeTarget()
-        {
-            if (String.IsNullOrWhiteSpace(this.BotToken))
-                throw new ArgumentOutOfRangeException("BotToken", "BotToken cannot be empty.");
-
-            if (String.IsNullOrWhiteSpace(this.ChatId))
-                throw new ArgumentOutOfRangeException("ChatId", "ChatId cannot be empty.");
-
-            base.InitializeTarget();
-        }
+        [RequiredParameter]
+        public Layout ChatId { get; set; }
 
         protected override void Write(AsyncLogEventInfo info)
         {
@@ -44,13 +38,17 @@ namespace NLog.Telegram
 
         private void Send(AsyncLogEventInfo info)
         {
-            var message = Layout.Render(info.LogEvent);
-            var uriBuilder = new UriBuilder(BaseUrl + BotToken);
+            var message = RenderLogEvent(Layout, info.LogEvent);
+            var baseurl = RenderLogEvent(BaseUrl, info.LogEvent);
+            var botToken = RenderLogEvent(BotToken, info.LogEvent);
+            var chatId = RenderLogEvent(ChatId, info.LogEvent);
+
+            var uriBuilder = new UriBuilder(baseurl + botToken);
             uriBuilder.Path += "/sendMessage";
             var url = uriBuilder.Uri.ToString();
             var builder = TelegramMessageBuilder
                     .Build(url, message)
-                    .ToChat(ChatId)
+                    .ToChat(chatId)
                     .OnError(e => info.Continuation(e))
                 ;
 

@@ -1,13 +1,11 @@
-NLog.Telegram
+NLog.Telegram.Format
 ==========
 
-An NLog target for Telegram with the avaiable format which provided by Telgram.
-Available format:
-  MARKDOWN
-  HTML5
-for more : https://core.telegram.org/bots/api#formatting-options
+An NLog target for Telegram with the avaiable format which provided by Telegram.
 
-This repository referenced by : https://github.com/narfunikita/NLog.Telegram
+[![Version](https://badge.fury.io/nu/NLog.Telegram.Format.svg)](https://www.nuget.org/packages/NLog.Telegram.Format)
+
+Code forked from repository : https://github.com/narfunikita/NLog.Telegram
 
 ------------
 
@@ -16,7 +14,7 @@ Usage
 1. Create a TelegramBot(https://core.telegram.org/bots#3-how-do-i-create-a-bot).
 2. Configure NLog to use `NLog.Telegram.Format`: https://github.com/nlog/nlog/wiki/Configuration-file
 
-### NLog.config
+### Example NLog.config
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -29,11 +27,10 @@ Usage
 
   <targets async="true">
     <target xsi:type="Telegram"
-            name ="telegramTarget"
-			layout="${message}"
-            botToken ="xxx"
+            name="telegramTarget"
+            layout="${message}"
+            botToken="xxx"
             chatId="xxx"
-            format="MARKDOWN"
             />
   </targets>
 
@@ -43,21 +40,22 @@ Usage
 </nlog>
 ```
 ---------
-### Example
+### Example Formatting
 ```csharp
 	var log = LogManager.GetCurrentClassLogger();
 
 	log.Debug($"`hello world` **hello world** __hello world__");
 ```
 
+For more: https://core.telegram.org/bots/api#formatting-options
+
 ### Configuration Options
 
 Key        | Description
 ----------:| -----------
-BotToken    | Your telegram bot token (e.g 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11)
-ChatId   | Unique identifier for the message recipient � User or GroupChat id
-BaseUrl | Optional. Api bot Url. Default: https://api.telegram.org/bot
-Format | Optional. Render layout for telegram message. Default : DEFAULT
+BotToken   | Your telegram bot token (e.g 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11)
+ChatId     | Unique identifier for the message recipient � User or GroupChat id
+BaseUrl    | Optional. Api bot Url. Default: https://api.telegram.org/bot
 
 ----------
 Reference: https://github.com/narfunikita/NLog.Telegram
